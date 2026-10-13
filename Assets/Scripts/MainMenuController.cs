@@ -36,6 +36,7 @@ public class MainMenuController : MonoBehaviour
         levelProgress = Mathf.Max(levelProgress, 0);
         for (int i = 0; i < levelButtons.Length; i++)
         {
+            if (levelButtons[i] == null) continue;
             if (i <= levelProgress)
             {
                 if (levelButtons[i].transform.childCount > 1)
@@ -43,8 +44,10 @@ public class MainMenuController : MonoBehaviour
             }
             else
             {
-                levelButtons[i].GetComponent<Button>().enabled = false;
-                levelButtons[i].transform.GetChild(1).gameObject.SetActive(true);
+                Button btn = levelButtons[i].GetComponent<Button>();
+                if (btn != null) btn.enabled = false;
+                if (levelButtons[i].transform.childCount > 1)
+                    levelButtons[i].transform.GetChild(1).gameObject.SetActive(true);
             }
         }
     }
@@ -126,8 +129,11 @@ public class MainMenuController : MonoBehaviour
 
     public void LevelBasla(int levelIndex)
     {
-        SceneManager.LoadScene(levelIndex);
-        Time.timeScale = 1;
+        if (levelIndex >= 1 && levelIndex <= 5)
+        {
+            SceneManager.LoadScene(levelIndex);
+            Time.timeScale = 1;
+        }
     }
 
     private void ShowPanel(GameObject menu, RectTransform panelRect, CanvasGroup canvasGroup)

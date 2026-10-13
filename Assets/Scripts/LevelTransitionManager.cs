@@ -1,10 +1,11 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelTransitionManager : MonoBehaviour
 {
     private const int LEVEL_START_INDEX = 1;
+    private const int MAX_PLAYABLE_LEVEL = 5;
     public static LevelTransitionManager Instance;
 
     public GameObject lightCorePrefab;
@@ -46,25 +47,24 @@ public class LevelTransitionManager : MonoBehaviour
         int currentIndex = SceneManager.GetActiveScene().buildIndex;
 
         
-        if (currentIndex == 30)
+        if (currentIndex >= MAX_PLAYABLE_LEVEL)
         {
             SceneManager.LoadScene(0);
         }
         else if (currentIndex + 1 < SceneManager.sceneCountInBuildSettings)
         {
-            
-            if (levelProgress == currentIndex && levelProgress < 30)
+            if (levelProgress == currentIndex && levelProgress < MAX_PLAYABLE_LEVEL)
             {
                 levelProgress++;
                 PlayerPrefs.SetInt("level", levelProgress);
             }
 
-            
             SceneManager.LoadScene(currentIndex + 1);
         }
         else
         {
             Debug.Log("Tüm seviyeler tamamlandı ama sahne tanımlı değil!");
+            SceneManager.LoadScene(0);
         }
 
         isTransitioning = false;

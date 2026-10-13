@@ -36,6 +36,10 @@ public class SwipeController : MonoBehaviour, IEndDragHandler
             MovePage();
             audioManager.PlaySFX(audioManager.nextPage);
         }
+        else
+        {
+            MovePage();
+        }
     }
 
     public void PreviousPage()
@@ -46,6 +50,10 @@ public class SwipeController : MonoBehaviour, IEndDragHandler
             targetPos -= pageStep;
             MovePage();
             audioManager.PlaySFX(audioManager.nextPage);
+        }
+        else
+        {
+            MovePage();
         }
     }
 
@@ -72,15 +80,21 @@ public class SwipeController : MonoBehaviour, IEndDragHandler
 
     void UpdateArrowButton()
     {
-        nextPageButton.interactable = true;
-        previousPageButton.interactable = true;
-        if (currentPage == 1)
+        if (nextPageButton != null)
         {
-            previousPageButton.interactable = false;
+            nextPageButton.interactable = (currentPage < maxPage);
+            if (maxPage <= 1)
+            {
+                nextPageButton.gameObject.SetActive(false);
+            }
         }
-        else if (currentPage == maxPage)
+        if (previousPageButton != null)
         {
-            nextPageButton.interactable = false;
+            previousPageButton.interactable = (currentPage > 1);
+            if (maxPage <= 1)
+            {
+                previousPageButton.gameObject.SetActive(false);
+            }
         }
     }
 }

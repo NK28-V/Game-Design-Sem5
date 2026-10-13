@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Target
+  - Checkpoint
+  - Mirror
+  - RedTarget
+  - BlueTarget
+  - Laser
+  - RedCheckpoint
+  - BlueCheckpoint
+  - BlueLaser
+  - RedLaser
+  - RedLaserCheckpoint
+  - BlueLaserCheckpoint
+  - RedLaserTarget
+  - BlueLaserTarget
+  - Block
+  - RotateButton
+  - MirrorClickArea
+  - MoveButton
+  - BlueLaserButton
+  - RedLaserButton
+  - Audio
+  - GreenLaser
+  - GreenLaserTarget
+  - GreenLaserCheckpoint
+  - GreenLaserButton
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Mirror
+  - Target
+  - Checkpoint
+  - LaserBeam
+  - IgnoreLaser
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
